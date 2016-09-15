@@ -15,7 +15,6 @@ Source0:	http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
 URL:		http://www.inf.puc-rio.br/~roberto/lpeg/
 BuildRequires:	lua-devel >= %{luaver}
 BuildRequires:	pkg-config
-Requires:	lua >= %{luaver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
