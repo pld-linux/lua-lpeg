@@ -13,8 +13,9 @@ Group:		Development/Libraries
 Source0:	http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
 # Source0-md5:	fabb614eb46e370d4f6b8fd82d17ca7e
 URL:		http://www.inf.puc-rio.br/~roberto/lpeg/
-BuildRequires:	lua-devel >= %{luaver}
-BuildRequires:	pkg-config
+BuildRequires:	lua51 >= %{luaver}
+BuildRequires:	lua51-devel >= %{luaver}
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
