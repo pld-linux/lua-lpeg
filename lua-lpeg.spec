@@ -6,12 +6,12 @@
 
 Summary:	Parsing Expression Grammars for Lua
 Name:		lua-lpeg
-Version:	0.12.2
+Version:	1.1.0
 Release:	1
 License:	MIT
 Group:		Development/Libraries
 Source0:	http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
-# Source0-md5:	fabb614eb46e370d4f6b8fd82d17ca7e
+# Source0-md5:	842a538b403b5639510c9b6fffd2c75b
 URL:		http://www.inf.puc-rio.br/~roberto/lpeg/
 BuildRequires:	lua51 >= %{luaver}
 BuildRequires:	lua51-devel >= %{luaver}
