@@ -47,7 +47,7 @@ Expression Grammars (PEGs).
 	CC="%{__cc}" \
 	COPT="%{rpmcflags}" \
 	LUADIR=$(pkg-config --variable includedir lua%{luaver}) \
-	DLLFLAGS="-shared -fPIC $(pkg-config --libs lua%{luaver})"
+	DLLFLAGS="%{rpmldflags} -shared -fPIC $(pkg-config --libs lua%{luaver})"
 
 %if %{with tests}
 %{__lua} test.lua
@@ -61,7 +61,7 @@ install -D lpeg.so build-%{luaver}/lpeg.so
 	CC="%{__cc}" \
 	COPT="%{rpmcflags}" \
 	LUADIR=$(pkg-config --variable includedir luajit) \
-	DLLFLAGS="-shared -fPIC $(pkg-config --libs luajit)"
+	DLLFLAGS="%{rpmldflags} -shared -fPIC $(pkg-config --libs luajit)"
 
 %if %{with tests}
 %{__luajit} test.lua
