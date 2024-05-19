@@ -14,9 +14,9 @@ Version:	1.1.0
 Release:	1
 License:	MIT
 Group:		Development/Libraries
-Source0:	http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
+Source0:	https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
 # Source0-md5:	842a538b403b5639510c9b6fffd2c75b
-URL:		http://www.inf.puc-rio.br/~roberto/lpeg/
+URL:		https://www.inf.puc-rio.br/~roberto/lpeg/
 BuildRequires:	lua51 >= %{luaver}
 BuildRequires:	lua51-devel >= %{luaver}
 BuildRequires:	luajit >= %{luajitabi}
