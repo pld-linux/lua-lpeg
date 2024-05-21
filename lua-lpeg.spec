@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	luajit	# LuaJIT package
+
 %define	__lua		/usr/bin/lua5.1
 %define	luaver		5.1
 %define	lualibdir	%{_libdir}/lua/%{luaver}
@@ -7,6 +11,10 @@
 %define	luajitabi	2.1
 %define	luajitlibdir	%{_libdir}/luajit/%{luajitabi}
 %define	luajitpkgdir	%{_datadir}/luajit/%{luajitabi}
+
+%ifnarch %{ix86} %{x8664} %{arm} aarch64 mips mips64 mipsel ppc
+%undefine	with_luajit
+%endif
 
 Summary:	Parsing Expression Grammars for Lua
 Name:		lua-lpeg
@@ -19,8 +27,10 @@ Source0:	https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
 URL:		https://www.inf.puc-rio.br/~roberto/lpeg/
 BuildRequires:	lua51 >= %{luaver}
 BuildRequires:	lua51-devel >= %{luaver}
+%if %{with luajit}
 BuildRequires:	luajit >= %{luajitabi}
 BuildRequires:	luajit-devel >= %{luajitabi}
+%endif
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -55,6 +65,7 @@ Expression Grammars (PEGs).
 
 install -D lpeg.so build-%{luaver}/lpeg.so
 
+%if %{with luajit}
 %{__make} clean
 
 %{__make} lpeg.so \
@@ -68,6 +79,7 @@ install -D lpeg.so build-%{luaver}/lpeg.so
 %endif
 
 install -D lpeg.so build-luajit/lpeg.so
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -77,9 +89,11 @@ install -p build-%{luaver}/lpeg.so $RPM_BUILD_ROOT%{lualibdir}/lpeg.so.%{version
 ln -s lpeg.so.%{version} $RPM_BUILD_ROOT%{lualibdir}/lpeg.so
 install -p re.lua $RPM_BUILD_ROOT%{luapkgdir}
 
+%if %{with luajit}
 install -p build-luajit/lpeg.so $RPM_BUILD_ROOT%{luajitlibdir}/lpeg.so.%{version}
 ln -s lpeg.so.%{version} $RPM_BUILD_ROOT%{luajitlibdir}/lpeg.so
 install -p re.lua $RPM_BUILD_ROOT%{luajitpkgdir}
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -90,8 +104,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{lualibdir}/lpeg.so*
 %{luapkgdir}/re.lua
 
+%if %{with luajit}
 %files -n luajit-lpeg
 %defattr(644,root,root,755)
 %doc HISTORY lpeg.html re.html lpeg-128.gif test.lua
 %attr(755,root,root) %{luajitlibdir}/lpeg.so*
 %{luajitpkgdir}/re.lua
+%endif
