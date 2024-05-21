@@ -1,0 +1,11 @@
+--- lpeg-1.1.0/makefile.orig	2023-06-26 18:30:55.000000000 +0200
++++ lpeg-1.1.0/makefile	2024-05-21 10:16:27.139816734 +0200
+@@ -39,7 +39,7 @@
+ 	$(MAKE) lpeg.so "DLLFLAGS = -bundle -undefined dynamic_lookup"
+ 
+ lpeg.so: $(FILES)
+-	env $(CC) $(DLLFLAGS) $(FILES) -o lpeg.so
++	env $(CC) $(FILES) -o lpeg.so $(DLLFLAGS)
+ 
+ $(FILES): makefile
+ 

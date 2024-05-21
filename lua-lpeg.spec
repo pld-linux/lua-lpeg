@@ -19,11 +19,12 @@
 Summary:	Parsing Expression Grammars for Lua
 Name:		lua-lpeg
 Version:	1.1.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Libraries
 Source0:	https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
 # Source0-md5:	842a538b403b5639510c9b6fffd2c75b
+Patch0:		link.patch
 URL:		https://www.inf.puc-rio.br/~roberto/lpeg/
 BuildRequires:	lua51 >= %{luaver}
 BuildRequires:	lua51-devel >= %{luaver}
@@ -48,6 +49,7 @@ Expression Grammars (PEGs).
 
 %prep
 %setup -q -n lpeg-%{version}
+%patch0 -p1
 # strict module not part of our Lua 5.1.4
 %{__sed} -i -e 's|require"strict"|-- require"strict"|' test.lua
 %{__chmod} -x test.lua
