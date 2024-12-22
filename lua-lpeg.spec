@@ -19,7 +19,7 @@
 Summary:	Parsing Expression Grammars for Lua
 Name:		lua-lpeg
 Version:	1.1.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Development/Libraries
 Source0:	https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
