@@ -49,7 +49,7 @@ Expression Grammars (PEGs).
 
 %prep
 %setup -q -n lpeg-%{version}
-%patch0 -p1
+%patch -P0 -p1
 # strict module not part of our Lua 5.1.4
 %{__sed} -i -e 's|require"strict"|-- require"strict"|' test.lua
 %{__chmod} -x test.lua
